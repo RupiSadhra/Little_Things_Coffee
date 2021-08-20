@@ -1,0 +1,80 @@
+/* custom css */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  color: white !important;
+}
+
+p,
+a {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+  font-weight: 300;
+}
+
+li,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+.page-container {
+  padding-top: 0 !important;
+}
+
+.container-width {
+  max-width: 80%;
+  margin: auto;
+}
+
+.button-style {
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  padding: 8px 20px;
+  text-transform: uppercase;
+  margin-top: 40px;
+  text-align: center;
+  /*   letter-spacing: 4px; */
+  margin: 10px 10px 0 0;
+  font-weight: 800;
+  /*   border: 2px solid #a9a9a9; */
+  border-radius: 4px;
+  transition: all 0.3s ease-in;
+}
+
+.button-style:hover {
+  color: white;
+  background-color: #000;
+}
+
+.button-style-reverse {
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  padding: 8px 20px;
+  text-transform: uppercase;
+  margin-top: 40px;
+  text-align: center;
+  /*   letter-spacing: 4px; */
+  margin: 10px 10px 0 0;
+  font-weight: 800;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  transition: all 0.3s ease-in;
+}
+
+.button-style-reverse:hover {
+  color: white;
+  background-color: #000;
+  border: 2px solid #000;
+}

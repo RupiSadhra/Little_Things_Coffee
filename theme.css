@@ -1,0 +1,117 @@
+/* custom css */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 1rem;
+}
+
+.background-image {
+  background-image: url("https://cdn.shopify.com/s/files/1/0194/3912/4580/files/malik-skydsgaard-ylGcmefqE_I-unsplash.jpg?v=1629274641");
+  position: relative;
+}
+
+/* announcement bar */
+
+.announcement-bar {
+  position: relative;
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.announcement-bar__message {
+  display: block;
+  font-weight: 200;
+  padding: 10px 20px;
+  margin: 0;
+}
+
+.announcement-bar-right {
+  text-align: right;
+  color: white;
+}
+
+.announcement-bar-right ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.announcement-bar-right ul li a {
+  color: white;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  align-self: center;
+}
+.announcement-bar-right ul li i {
+  color: white;
+  padding: 10px 5px;
+  font-size: 1.2rem;
+}
+.announcement-bar-right ul li a span.icon-cart {
+  font-size: 1.2rem;
+}
+
+/* hero section */
+.hero-container {
+  width: 100vw;
+  height: 60vh;
+  position: relative;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 40%;
+}
+
+.site-nav--compress .site-nav__item:not(.site-nav__item--compressed) {
+  display: block;
+}
+
+/* footer */
+footer {
+  background-color: #000;
+  width: 100vw;
+  padding: 5rem 0;
+  min-height: 35vh;
+  color: white;
+}
+.footer-container {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.footer-left {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.footer-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.footer-links {
+  color: white !important;
+}
+
+/* hamburger */
+
+#hamburger {
+  display: none;
+}
