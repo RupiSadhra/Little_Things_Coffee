@@ -94,7 +94,7 @@ ol {
   align-self: center;
 }
 
-.header-menu ul {
+.header-menu ul.category-list {
   display: flex;
 }
 
@@ -111,4 +111,73 @@ ol {
   grid-gap: 2rem;
   grid-row-gap: 10rem;
   padding-bottom: 6rem;
+}
+
+/*22 aug */
+.btn,
+.btn--secondary,
+.rte .btn,
+.rte .btn--secondary,
+.rte .shopify-payment-button .shopify-payment-button__button--unbranded,
+.shopify-payment-button .rte .shopify-payment-button__button--unbranded,
+.shopify-payment-button .shopify-payment-button__button--unbranded {
+  display: inline-block;
+  padding: 8px 10px;
+  margin: 0;
+  width: auto;
+  line-height: 1.42;
+  font-weight: 900;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  white-space: normal;
+  cursor: pointer;
+  border: 1px solid transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  -webkit-transition: background-color 0.4s ease-out;
+  -moz-transition: background-color 0.4s ease-out;
+  -ms-transition: background-color 0.4s ease-out;
+  -o-transition: background-color 0.4s ease-out;
+  transition: background-color 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+
+.input-group .input-group-btn:first-child,
+.input-group .input-group-btn:first-child > .btn,
+.input-group .input-group-btn:first-child > .btn--secondary,
+.input-group .input-group-field:first-child,
+.input-group
+  .shopify-payment-button
+  .input-group-btn:first-child
+  > .shopify-payment-button__button--unbranded,
+.input-group
+  .shopify-payment-button
+  input[type="hidden"]:first-child
+  + .input-group-btn
+  > .shopify-payment-button__button--unbranded,
+.input-group input[type="hidden"]:first-child + .input-group-btn > .btn,
+.input-group
+  input[type="hidden"]:first-child
+  + .input-group-btn
+  > .btn--secondary,
+.input-group input[type="hidden"]:first-child + .input-group-field,
+.shopify-payment-button
+  .input-group
+  .input-group-btn:first-child
+  > .shopify-payment-button__button--unbranded,
+.shopify-payment-button
+  .input-group
+  input[type="hidden"]:first-child
+  + .input-group-btn
+  > .shopify-payment-button__button--unbranded {
+  border-radius: 5px;
 }

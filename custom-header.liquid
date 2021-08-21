@@ -107,7 +107,7 @@
                   - http://docs.shopify.com/themes/liquid-variables/linklists
               {% endcomment %}
               <!-- begin site-nav -->
-              <ul class="site-nav" id="AccessibleNav">
+              <ul class="site-nav category-list" id="AccessibleNav">
                 {% for link in linklists[section.settings.main_menu_link_list].links %}
                   {% if link.links != blank %}
                   {% assign parent_index = forloop.index %}
@@ -271,6 +271,24 @@
                     </a>
                   </li>
                 {% endif %}
+
+                 {% comment %}
+                      Set the default button style if not defined
+                    {% endcomment %}
+                    {% unless search_btn_style %}
+                      {% assign search_btn_style = 'btn--secondary' %}
+                    {% endunless %}
+
+                    <form action="{{ routes.search_url }}" method="get" class="input-group search-bar {{ search_bar_location }}" role="search">
+                      {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+                      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" class="input-group-field" aria-label="{{ 'general.search.placeholder' | t }}">
+                      <span class="input-group-btn">
+                        <button type="submit" class="{{ search_btn_style }} icon-fallback-text">
+                          <span class="icon icon-search" aria-hidden="true"></span>
+                          <span class="fallback-text">{{ 'general.search.submit' | t }}</span>
+                        </button>
+                      </span>
+                    </form>
 			</div>
 <!--                search end -->
             
