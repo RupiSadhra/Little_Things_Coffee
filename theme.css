@@ -10,6 +10,8 @@ body {
 .background-image {
   background-image: url("https://cdn.shopify.com/s/files/1/0194/3912/4580/files/malik-skydsgaard-ylGcmefqE_I-unsplash.jpg?v=1629274641");
   position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* announcement bar */

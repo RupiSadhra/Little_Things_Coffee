@@ -79,7 +79,7 @@ ol {
   border: 2px solid #000;
 }
 /* 21 aug */
-.wrapper {
+.header-menu {
   max-width: 100%;
   margin: auto;
   display: grid;
@@ -90,10 +90,25 @@ ol {
   grid-gap: 1rem;
 }
 
-.wrapper div {
+.header-menu div {
   align-self: center;
 }
 
-.wrapper ul {
+.header-menu ul {
   display: flex;
+}
+
+.two-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-container {
+  width: 70%;
+  margin: auto;
+  grid-gap: 2rem;
+  grid-row-gap: 10rem;
+  padding-bottom: 6rem;
 }
