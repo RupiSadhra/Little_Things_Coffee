@@ -181,3 +181,24 @@ ol {
   > .shopify-payment-button__button--unbranded {
   border-radius: 5px;
 }
+/* 25 Aug */
+
+.wrapper
+{
+	max-width:80%;
+   
+}
+
+.coffee-hero
+{
+  width:100%;
+  min-height:50vh;
+  
+}
+.two-column-grid-odd
+{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  justify-content:center;
+  align-items:center;
+}
