@@ -145,3 +145,28 @@ footer {
   background-color: #000;
   opacity: 0.6;
 }
+
+
+
+/* 26 aug */
+
+.coffee-collection
+{
+  width:50%;
+  margin:auto;
+}
+
+
+.grid-item-background
+{
+  background-color:white;
+  max-width:400px;
+  min-height:450px;
+  margin:2rem 0.5rem;
+  border:1px solid white;
+  border-radius:5px;
+}
+.grid-collage
+{
+	margin-top:-2rem;
+}

@@ -182,16 +182,16 @@ ol {
   border-radius: 5px;
 }
 /* 25 Aug */
-
 .wrapper
 {
-	max-width:80%;
+	max-width:100%;
    
 }
 
 .coffee-hero
 {
-  width:100%;
+  width:90%;
+  margin:auto;
   min-height:50vh;
   
 }
@@ -201,4 +201,9 @@ ol {
   grid-template-columns:2fr 1fr;
   justify-content:center;
   align-items:center;
+}
+
+.header-margin
+{
+	margin-top:7rem;
 }
