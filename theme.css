@@ -170,3 +170,30 @@ footer {
 {
 	margin-top:-2rem;
 }
+
+.bean-roaster-collection-container
+{
+  margin:8rem;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+.bean-roaster-collection-container section
+{
+  width:80%;
+	margin:auto;
+}
+
+.product-container
+{
+  width:60%;
+  margin:auto;
+  background-color:white;
+  padding:40px;
+  color:#000;
+  border:2px solid white;
+  border-radius:5px;
+}
