@@ -1,17 +1,15 @@
 /* custom css */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
-body {
-  font-family: "Montserrat", sans-serif;
-  color: white;
-  font-size: 1rem;
-}
 
-.background-image {
-  background-image: url("https://cdn.shopify.com/s/files/1/0194/3912/4580/files/malik-skydsgaard-ylGcmefqE_I-unsplash.jpg?v=1629274641");
-  position: relative;
-  background-repeat: no-repeat;
-  background-size: cover;
+.background-image
+{
+  background-image:url('https://cdn.shopify.com/s/files/1/0194/3912/4580/files/Timber_Background_EXT_1.png?v=1629972560');
+  position:relative;
+  background-repeat:no-repeat;
+  background-size:cover;
+  width:100%;
+  margin:0;
+  padding:0;
 }
 
 /* announcement bar */
@@ -19,98 +17,112 @@ body {
 .announcement-bar {
   position: relative;
   text-decoration: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  justify-content:center;
+  align-items:center;
 }
 
-.announcement-bar__message {
-  display: block;
-  font-weight: 200;
+
+
+.announcement-bar-right{
+  text-align:right;
+  color:white;
+}
+
+.announcement-bar-right ul{
+  display:flex;
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  justify-content:center;
+  align-items:center;
+}
+
+.announcement-bar-right ul li a{
+  color:white;
   padding: 10px 20px;
-  margin: 0;
+  font-size:0.9rem;
+  margin-top:20px;
+  align-self:center;
+ 
 }
-
-.announcement-bar-right {
-  text-align: right;
-  color: white;
-}
-
-.announcement-bar-right ul {
-  display: flex;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  justify-content: center;
-  align-items: center;
-}
-
-.announcement-bar-right ul li a {
-  color: white;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  margin-top: 20px;
-  align-self: center;
-}
-.announcement-bar-right ul li i {
-  color: white;
+.announcement-bar-right ul li i{
+  color:white;
   padding: 10px 5px;
-  font-size: 1.2rem;
+  font-size:1.2rem;
 }
-.announcement-bar-right ul li a span.icon-cart {
-  font-size: 1.2rem;
+.announcement-bar-right ul li a span.icon-cart
+{
+  font-size:1.2rem;
 }
+
 
 /* hero section */
-.hero-container {
-  width: 100vw;
-  height: 60vh;
-  position: relative;
+.hero-container
+{
+  width:100vw;
+  min-height:100vh;
+  position:relative;
+  background-image:url('https://cdn.shopify.com/s/files/1/0194/3912/4580/files/shutterstock_1037995396_1.png?v=1629971308');
+  background-repeat:no-repeat;
+  background-size:cover;
 }
 
-.hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-  width: 40%;
+.hero-text
+{
+  position:absolute;
+  top:45%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:3;
+  width:40%;
 }
+
+/* displays the menu */
 
 .site-nav--compress .site-nav__item:not(.site-nav__item--compressed) {
-  display: block;
+    display: block;
 }
+
 
 /* footer */
-footer {
-  background-color: #000;
-  width: 100vw;
-  padding: 5rem 0;
-  min-height: 35vh;
-  color: white;
+footer
+{
+   background-color:#000;
+   width:100vw;
+   padding:5rem 0;
+   min-height:35vh;
+  color:white;
+  margin-top:6rem;
 }
-.footer-container {
-  width: 90%;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-}
-
-.footer-left {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1rem;
+.footer-container
+{
+  width:90%;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr;
 }
 
-.footer-right {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.footer-left
+{
+   display:grid;
+   grid-template-columns:1fr 1fr 1fr;
+  grid-gap:1rem;
 }
 
-.footer-links {
-  color: white !important;
+.footer-right
+{
+  display:grid;
+   grid-template-columns:1fr 1fr;
 }
+
+.footer-links
+{
+  color:white !important;
+}
+
+
 
 /* hamburger */
 
@@ -120,32 +132,31 @@ footer {
 
 /* 22 aug */
 .site-nav.category-list a {
-  color: white;
-  font-size: 0.9rem;
+	color:white;
+  font-size:0.9rem;
 }
-.site-nav--has-dropdown.nav-hover > a,
-.site-nav--has-dropdown:hover > a,
-.site-nav--has-dropdown > a.nav-focus {
-  color: #000;
-  background-color: #fff;
-  opacity: 1;
-  -webkit-transition: none;
-  -moz-transition: none;
-  -ms-transition: none;
-  -o-transition: none;
-  transition: none;
+.site-nav--has-dropdown.nav-hover>a, .site-nav--has-dropdown:hover>a, .site-nav--has-dropdown>a.nav-focus {
+    color: #000;
+    background-color: #fff;
+    opacity: 1;
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
 }
 
-.site-nav__dropdown a,
-.site-nav__grandchild-dropdown a {
-  background-color: transparent;
-  color: #000 !important;
-}
-.button-hover:hover {
-  background-color: #000;
-  opacity: 0.6;
+.site-nav__dropdown a, .site-nav__grandchild-dropdown a {
+    background-color: transparent;
+    color: #000 !important;
 }
 
+.button-hover:hover
+{
+  
+  background-color:#000;
+  opacity:0.6;
+}
 
 
 /* 26 aug */
@@ -156,12 +167,17 @@ footer {
   margin:auto;
 }
 
-
+.coffee-collection-other
+{
+  width:80%;
+  margin:auto;
+}
+ section
 .grid-item-background
 {
   background-color:white;
   max-width:400px;
-  min-height:450px;
+  min-height:510px;
   margin:2rem 0.5rem;
   border:1px solid white;
   border-radius:5px;
@@ -197,3 +213,69 @@ footer {
   border:2px solid white;
   border-radius:5px;
 }
+
+
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {  
+    
+}
+
+ 
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 992px) { 
+    .footer-container, .footer-left,.footer-right,.two-column-grid
+    {
+        grid-template-columns:1fr;
+      margin-bottom:4rem;
+    }
+  
+    .category-container
+    {
+      width:80%;
+      
+    }
+  
+    .two-column-grid{
+      grid-gap:2rem;
+    }
+  
+  	.two-column-grid .container-width-extra
+    {
+          grid-row:2/3;
+    }
+  
+    .hero-text,.footer-container
+    {
+      width:70%;
+    }
+  
+  	
+  
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (max-width: 768px) { 
+  
+  
+    .header-menu ul.category-list
+    {
+		display:none;
+    }
+  
+    #hamburger
+    {
+      display:block;
+    }
+  
+    .burger-icon
+    {
+    background:white;
+    }
+ 
+}
+ /* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px) {  
+ 
+}
+ 

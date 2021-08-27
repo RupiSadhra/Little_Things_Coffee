@@ -1,187 +1,108 @@
 /* custom css */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Montserrat", sans-serif;
-  color: white !important;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+
+body,html
+{
+  max-width:100%;
+  overflow-x:hidden;
+  padding:0;
+  margin:0;
+   font-family: 'Montserrat', sans-serif;
+  color:white;
+  font-size:1rem;
+  box-sizing:border-box;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family:  'Montserrat', sans-serif;
+  color:white !important;
 }
 
-p,
-a {
-  font-size: 0.9rem;
-  line-height: 1.7;
-  margin: 0;
-  font-weight: 300;
+p,a
+{
+  font-size:1rem;
+  line-height:1.7;
+  margin:0;
+  font-weight:300;
 }
 
-li,
-ul,
-ol {
-  margin: 0;
-  padding: 0;
+li,ul,ol
+{
+  margin:0;
+  padding:0;
 }
 
 .page-container {
   padding-top: 0 !important;
 }
 
-.container-width {
-  max-width: 80%;
-  margin: auto;
+.container-width
+{
+  max-width:80%;
+  margin:auto;
 }
 
-.button-style {
-  cursor: pointer;
-  display: inline-block;
-  text-decoration: none;
-  color: #000;
-  background-color: #fff;
-  padding: 8px 20px;
-  text-transform: uppercase;
-  margin-top: 40px;
-  text-align: center;
-  /*   letter-spacing: 4px; */
-  margin: 10px 10px 0 0;
-  font-weight: 800;
-  /*   border: 2px solid #a9a9a9; */
-  border-radius: 4px;
-  transition: all 0.3s ease-in;
+.container-width-extra
+{
+  max-width:70%;
+  margin:auto;
 }
 
-.button-style:hover {
-  color: white;
-  background-color: #000;
+/* 21 aug work */
+.header-menu
+{
+  max-width:100%;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+/*   grid-template-columns:repeat(3,minmax(500px,1fr)); */
+  justify-content:center;
+  align-items:center;
+  grid-gap:1rem;
 }
 
-.button-style-reverse {
-  cursor: pointer;
-  display: inline-block;
-  text-decoration: none;
-  color: #fff;
-  padding: 8px 20px;
-  text-transform: uppercase;
-  margin-top: 40px;
-  text-align: center;
-  /*   letter-spacing: 4px; */
-  margin: 10px 10px 0 0;
-  font-weight: 800;
-  border: 2px solid #fff;
-  border-radius: 4px;
-  transition: all 0.3s ease-in;
+.header-menu div
+{
+  align-self:center;
 }
 
-.button-style-reverse:hover {
-  color: white;
-  background-color: #000;
-  border: 2px solid #000;
-}
-/* 21 aug */
-.header-menu {
-  max-width: 100%;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  /*   grid-template-columns:repeat(3,minmax(500px,1fr)); */
-  justify-content: center;
-  align-items: center;
-  grid-gap: 1rem;
+.header-menu ul.category-list
+{
+  display:flex;
 }
 
-.header-menu div {
-  align-self: center;
+.two-column-grid
+{
+   display:grid;
+  grid-template-columns:1fr 1fr;
+  justify-content:center;
+  align-items:center;
+ 
 }
 
-.header-menu ul.category-list {
-  display: flex;
+.category-container
+{
+	width:70%;
+  margin:auto;
+   grid-gap:2rem;
+  grid-row-gap:10rem;
+  padding-bottom:6rem;
+  
 }
 
-.two-column-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
+/* 
+22 aug */
+
+
+
+.input-group .input-group-btn:first-child, .input-group .input-group-btn:first-child>.btn, .input-group .input-group-btn:first-child>.btn--secondary, .input-group .input-group-field:first-child, .input-group .shopify-payment-button .input-group-btn:first-child>.shopify-payment-button__button--unbranded, .input-group .shopify-payment-button input[type=hidden]:first-child+.input-group-btn>.shopify-payment-button__button--unbranded, .input-group input[type=hidden]:first-child+.input-group-btn>.btn, .input-group input[type=hidden]:first-child+.input-group-btn>.btn--secondary, .input-group input[type=hidden]:first-child+.input-group-field, .shopify-payment-button .input-group .input-group-btn:first-child>.shopify-payment-button__button--unbranded, .shopify-payment-button .input-group input[type=hidden]:first-child+.input-group-btn>.shopify-payment-button__button--unbranded {
+    border-radius:5px;
 }
 
-.category-container {
-  width: 70%;
-  margin: auto;
-  grid-gap: 2rem;
-  grid-row-gap: 10rem;
-  padding-bottom: 6rem;
-}
 
-/*22 aug */
-.btn,
-.btn--secondary,
-.rte .btn,
-.rte .btn--secondary,
-.rte .shopify-payment-button .shopify-payment-button__button--unbranded,
-.shopify-payment-button .rte .shopify-payment-button__button--unbranded,
-.shopify-payment-button .shopify-payment-button__button--unbranded {
-  display: inline-block;
-  padding: 8px 10px;
-  margin: 0;
-  width: auto;
-  line-height: 1.42;
-  font-weight: 900;
-  text-decoration: none;
-  text-align: center;
-  vertical-align: middle;
-  white-space: normal;
-  cursor: pointer;
-  border: 1px solid transparent;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: 5px;
-  background-color: #000;
-  color: #fff;
-  -webkit-transition: background-color 0.4s ease-out;
-  -moz-transition: background-color 0.4s ease-out;
-  -ms-transition: background-color 0.4s ease-out;
-  -o-transition: background-color 0.4s ease-out;
-  transition: background-color 0.4s ease-out;
-  transition: all 0.4s ease-out;
-}
-
-.input-group .input-group-btn:first-child,
-.input-group .input-group-btn:first-child > .btn,
-.input-group .input-group-btn:first-child > .btn--secondary,
-.input-group .input-group-field:first-child,
-.input-group
-  .shopify-payment-button
-  .input-group-btn:first-child
-  > .shopify-payment-button__button--unbranded,
-.input-group
-  .shopify-payment-button
-  input[type="hidden"]:first-child
-  + .input-group-btn
-  > .shopify-payment-button__button--unbranded,
-.input-group input[type="hidden"]:first-child + .input-group-btn > .btn,
-.input-group
-  input[type="hidden"]:first-child
-  + .input-group-btn
-  > .btn--secondary,
-.input-group input[type="hidden"]:first-child + .input-group-field,
-.shopify-payment-button
-  .input-group
-  .input-group-btn:first-child
-  > .shopify-payment-button__button--unbranded,
-.shopify-payment-button
-  .input-group
-  input[type="hidden"]:first-child
-  + .input-group-btn
-  > .shopify-payment-button__button--unbranded {
-  border-radius: 5px;
-}
 /* 25 Aug */
+
 .wrapper
 {
 	max-width:100%;
@@ -194,6 +115,11 @@ ol {
   margin:auto;
   min-height:50vh;
   
+}
+
+.coffee-hero img
+{
+	margin-top:-100px;
 }
 .two-column-grid-odd
 {
