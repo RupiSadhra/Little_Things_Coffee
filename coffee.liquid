@@ -1,18 +1,19 @@
 <!-- cofee hero section -->
 <div class="coffee-hero two-column-grid">
   <section>
-    <h1>Green Beans, roasted beans and coffee pods, we've got your caffiene fix sorted!</h1>
+    <h1>Green Beans, roasted beans and coffee pods, we've got your caffeine fix sorted!</h1>
     <p>We roast and ship coffee every workday to ensure that your morning cup of coffee is as fresh as possible. Four different grind options and three packet sizes, as well as decaf or regular.</p>
-      <a href="" class="button-style">SHOP FOR COFFEE</a>
-      <a href="" class="button-style">SHOP ROASTED BEANS</a>
-      <a href="" class="button-style">SHOP COFFEE PODS</a>
+      <a href="#CollectionSection149944795236" class="button-style">SHOP FOR COFFEE</a>
+      <a href="#CollectionSection268471337112" class="button-style">SHOP ROASTED BEANS</a>
+      <a href="#CollectionSection275536412824" class="button-style">SHOP COFFEE PODS</a>
   </section>
-  <img>
+  <img src="https://cdn.shopify.com/s/files/1/0194/3912/4580/files/pexels-jessica-lewis-867470_1.png?v=1629974247">
 </div>
 
 <div class="coffee-collection">
 {% for collection in collections %}
-{% if collection.title == "Coffee Beans" or collection.title == "Green Coffee Beans" or collection.title == "Coffee Roasters"%}
+ 
+{% if collection.id == 149944795236 or collection.id == 275536412824 or collection.id == 268471337112%}
 <!-- /templates/collection.liquid -->
 {%- if section.settings.show_collection_image and collection.image -%}
   <div class="collection-hero">
@@ -53,15 +54,15 @@
   </div>
 {%- endif -%}
 
-<div id="CollectionSection" data-section-id="{{ section.id }}" data-section-type="collection-template" data-grid-type="{{ section.settings.collection_products_grid }}">
+<div id="CollectionSection{{collection.id}}" data-section-id="{{ section.id }}" data-section-type="collection-template" data-grid-type="{{ section.settings.collection_products_grid }}">
   {%- paginate collection.products by 12 -%}
   <header class="section-header text-center header-margin">
     <h1>{{ collection.title }}</h1>
-  
+  	
     {%- if collection.description != blank -%}
       <div class="grid">
         <div class="grid__item">
-          <div class="rte">
+          <div class="rte category-description">
             {{ collection.description }}
           </div>
         </div>
@@ -182,8 +183,14 @@
 
 <!-- bean roaster -->
 <div class="bean-roaster-collection-container">
-  <div class="bean-roaster-collection">
-  </div>
+  <section >
+    <h1>Need a bean roaster?</h1>
+    <p>Check out our roasters that will turn your green beans into beautifully roasted coffee.</p>
+        
+    <img src="https://cdn.shopify.com/s/files/1/0194/3912/4580/files/unnamed_1024x1024_1.png?v=1629972683" width="600"><br>
+     <a style="display:inline-block; margin-top:-1rem"href="https://k14ctwcyphb6l0wi-19439124580.shopifypreview.com/collections/coffee-roasters" class="button-style">SHOP BEAN ROASTERS</a><br>
+
+  </section>
 </div>
 
 {% schema %}
