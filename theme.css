@@ -557,7 +557,41 @@ div.giraffly-right-Bar-Preview-Example
 {
 	color:#000 !important;
 }
-
+.cart__price,.cart__subtotal,.rte
+{
+	color:#000;
+}
+.product-single__meta
+{
+	position:relative;
+}
+.subscription-modal
+{
+	position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#fff;
+  z-index:99;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+.subscription-close-button
+{
+  position:absolute;
+  top:0;
+  right:-10%;
+  width:100px;
+  height:100px;
+  cursor:pointer;
+}
+.subscription-close-button i
+{
+	font-size:1.5rem;
+}
 @media (max-width: 1400px) {  
  
    .site-nav.category-list a

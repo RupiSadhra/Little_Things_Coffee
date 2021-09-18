@@ -218,159 +218,157 @@
     
       
      
-        <div class="grid__item product-single__meta--wrapper medium--five-twelfths large--five-twelfths white-container">
-            <div class="product-single__meta">
-              {% if section.settings.product_vendor_enable %}
-                <h2 class="product-single__vendor" itemprop="brand">{{ product.vendor }}</h2>
-              {% endif %}
+       <div class="grid__item product-single__meta--wrapper medium--five-twelfths large--five-twelfths white-container">
+        <div class="product-single__meta">
+          {% if section.settings.product_vendor_enable %}
+            <h2 class="product-single__vendor" itemprop="brand">{{ product.vendor }}</h2>
+          {% endif %}
 
-              <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
+          <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
 
-              <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                {% comment %}
-                  Optionally show the 'compare at' or original price of the product.
-                {% endcomment %}
-                {% include 'product-price', variant: current_variant %}
+          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            {% comment %}
+              Optionally show the 'compare at' or original price of the product.
+            {% endcomment %}
+            {% include 'product-price', variant: current_variant %}
 
-                {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
-                  <div class="product-single__policies rte">
-                    {%- if shop.taxes_included -%}
-                      {{ 'products.general.include_taxes' | t }}
-                    {%- endif -%}
-                    {%- if shop.shipping_policy.body != blank -%}
-                      {{ 'products.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                    {%- endif -%}
-                  </div>
+            {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
+              <div class="product-single__policies rte">
+                {%- if shop.taxes_included -%}
+                  {{ 'products.general.include_taxes' | t }}
                 {%- endif -%}
+                {%- if shop.shipping_policy.body != blank -%}
+                  {{ 'products.general.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
 
-                <hr class="hr--small">
+          
 
-                <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
-                <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+            <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
+            <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 
-                {% capture "form_classes" %}
-                  product-single__form{% if product.has_only_default_variant %} product-single__form--no-variants{% endif %}
-                {%- endcapture %}
+            {% capture "form_classes" %}
+              product-single__form{% if product.has_only_default_variant %} product-single__form--no-variants{% endif %}
+            {%- endcapture %}
 
-                {% capture "form_id" %}AddToCartForm--{{ section.id }}{%- endcapture %}
+            {% capture "form_id" %}AddToCartForm--{{ section.id }}{%- endcapture %}
 
-                {% form 'product', product, data-productid: product.id, class:form_classes, id:form_id, data-product-form: '' %}
-    <!-- Begin ReCharge code -->
-    {% if product.available %}{% include 'subscription-product' %}{% endif %}
-    <!-- End ReCharge code -->
-
-                  {% unless product.has_only_default_variant %}
-                    {% for option in product.options_with_values %}
-                      <div class="radio-wrapper js product-form__item">
-                        <label class="single-option-radio__label"
-                          for="ProductSelect-option-{{ forloop.index0 }}">
-                          {{ option.name | escape }}
-                        </label>
-                        {% if section.settings.product_selector == 'radio' %}
-                          <fieldset class="single-option-radio"
-                            id="ProductSelect-option-{{ forloop.index0 }}">
-                            {% assign option_index = forloop.index %}
-                            {% for value in option.values %}
-                              {% assign variant_label_state = true %}
-                              {% if product.options.size == 1 %}
-                                {% unless product.variants[forloop.index0].available  %}
-                                  {% assign variant_label_state = false %}
-                                {% endunless %}
-                              {% endif %}
-                              <input type="radio"
-                                {% if option.selected_value == value %} checked="checked"{% endif %}
-                                {% unless variant_label_state %} disabled="disabled"{% endunless %}
-                                value="{{ value | escape }}"
-                                data-index="option{{ option_index }}"
-                                name="option{{ option.position }}"
-                                class="single-option-selector__radio{% unless variant_label_state %} disabled{% endunless %}"
-                                id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
-                              <label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}"{% unless variant_label_state %} class="disabled"{% endunless %}>{{ value | escape }}</label>
-                            {% endfor %}
-                          </fieldset>
-                        {% else %}
-                          <select class="single-option-selector__radio single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
-                            {% for value in option.values %}
-                              <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value | escape }}</option>
-                            {% endfor %}
-                          </select>
-                        {% endif %}
-                      </div>
-                    {% endfor %}
-                  {% endunless %}
-
-                  <select name="id" data-productid="{{ product.id }}" id="ProductSelect" class="product-single__variants no-js">
-                    {% for variant in product.variants %}
-                      {% if variant.available %}
-                        <option {% if variant == product.selected_or_first_available_variant %}
-                          selected="selected" {% endif %}
-                          data-sku="{{ variant.sku }}"
-                          value="{{ variant.id }}">
-                          {{ variant.title }} - {{ variant.price | money_with_currency }}
-                        </option>
-                      {% else %}
-                        <option disabled="disabled">
-                          {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-                        </option>
-                      {% endif %}
-                    {% endfor %}
-                  </select>
-
-                  {% if section.settings.quantity_enabled %}
-                  <div class="product-single__quantity">
-                    <label for="Quantity" class="product-single__quantity-label js-quantity-selector">{{ 'products.product.quantity' | t }}</label>
-                    <input type="number" hidden="hidden" id="Quantity" name="quantity" value="1" min="1" class="js-quantity-selector">
-                  </div>
-                  {% endif %}
-
-                  <div class="product-single__add-to-cart{% if section.settings.add_to_cart_button_size == 'large' %} product-single__add-to-cart--full-width{% endif %}">
-                    <button type="submit" name="add" id="AddToCart--{{ section.id }}" class="btn btn--add-to-cart{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %} "{% unless current_variant.available %} disabled="disabled"{% endunless %}>
-                      <span class="btn__text">
-                        {% if current_variant.available %}
-                          {{ 'products.product.add_to_cart' | t }}
-                        {% else %}
-                          {{ 'products.product.sold_out' | t }}
-                        {% endif %}
-                      </span>
-                    </button>
-                    {% if section.settings.enable_payment_button %}
-                      {{ form | payment_button }}
+            {% form 'product', product, data-productid: product.id, class:form_classes, id:form_id, data-product-form: '' %}
+             	<div class="subscription-modal">
+                  <div class="subscription-close-button"><i class="fas fa-times"></i></div>
+                   <!-- Begin ReCharge code -->
+                    {% if product.available %}{% include 'subscription-product' %}{% endif %}
+                    <!-- End ReCharge code -->
+            
+                   <div class="button-style-black subscription-checkout">Go to Checkout</div>
+				</div>
+              {% unless product.has_only_default_variant %}
+                {% for option in product.options_with_values %}
+                  <div class="radio-wrapper js product-form__item">
+                    <label class="single-option-radio__label"
+                      for="ProductSelect-option-{{ forloop.index0 }}">
+                      {{ option.name | escape }}
+                    </label>
+                    {% if true%}
+                      <fieldset class="single-option-radio"
+                        id="ProductSelect-option-{{ forloop.index0 }}">
+                        {% assign option_index = forloop.index %}
+                        {% for value in option.values %}
+                          {% assign variant_label_state = true %}
+                          {% if product.options.size == 1 %}
+                            {% unless product.variants[forloop.index0].available  %}
+                              {% assign variant_label_state = false %}
+                            {% endunless %}
+                          {% endif %}
+                          <input type="radio"
+                            {% if option.selected_value == value %} checked="checked"{% endif %}
+                            {% unless variant_label_state %} disabled="disabled"{% endunless %}
+                            value="{{ value | escape }}"
+                            data-index="option{{ option_index }}"
+                            name="option{{ option.position }}"
+                            class="single-option-selector__radio{% unless variant_label_state %} disabled{% endunless %}"
+                            id="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}">
+                          <label for="ProductSelect-option-{{ option.name | handleize }}-{{ value | escape }}"{% unless variant_label_state %} class="disabled"{% endunless %}>{{ value | escape }}</label>
+                        {% endfor %}
+                      </fieldset>
+                    {% else %}
+                      <select class="single-option-selector__radio single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+                        {% for value in option.values %}
+                          <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value | escape }}</option>
+                        {% endfor %}
+                      </select>
                     {% endif %}
                   </div>
-                {% endform %}
+                {% endfor %}
+              {% endunless %}
 
+              <select name="id" data-productid="{{ product.id }}" id="ProductSelect" class="product-single__variants no-js">
+                {% for variant in product.variants %}
+                  {% if variant.available %}
+                    <option {% if variant == product.selected_or_first_available_variant %}
+                      selected="selected" {% endif %}
+                      data-sku="{{ variant.sku }}"
+                      value="{{ variant.id }}">
+                      {{ variant.title }} - {{ variant.price | money_with_currency }}
+                    </option>
+                  {% else %}
+                    <option disabled="disabled">
+                      {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                    </option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+
+              {% if section.settings.quantity_enabled %}
+              <div class="product-single__quantity">
+                <label for="Quantity" class="product-single__quantity-label js-quantity-selector">{{ 'products.product.quantity' | t }}</label>
+                <input type="number" hidden="hidden" id="Quantity" name="quantity" value="1" min="1" class="js-quantity-selector">
               </div>
-
-
-
-              <div class="prod-accrfaqpage">
-
-                <div class="accordion" id="section1">Description<span></span></div>
-                <div class="container">
-                <div class="content">
-                   <div class="product-single__description rte" itemprop="description">
-                    {{ product.description }}
-                   </div>
-                </div>
-                </div>
-                <div class="accordion" id="section2">Reviews<span></span></div>
-                <div class="container">
-                <div class="content">
-               <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
-                </div>
-                </div>
-
-
-              </div>
-
-              {% if section.settings.social_sharing_products %}
-                {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
               {% endif %}
-            </div>
+
+              <div class="product-single__add-to-cart{% if section.settings.add_to_cart_button_size == 'large' %} product-single__add-to-cart--full-width{% endif %}">
+                <button type="submit" name="add" id="AddToCart--{{ section.id }}" class="button-style-black btn btn--add-to-cart{% if section.settings.enable_payment_button %} btn--secondary-accent{% endif %}"{% unless current_variant.available %} disabled="disabled"{% endunless %}>
+                  <span class="btn__text">
+                    {% if current_variant.available %}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {% else %}
+                      {{ 'products.product.sold_out' | t }}
+                    {% endif %}
+                  </span>
+                </button>
+<!--                 {% if section.settings.enable_payment_button %}
+                  {{ form | payment_button }}
+                {% endif %} -->
+              </div>
+            {% endform %}
+
           </div>
+
+         
+        </div>
+      </div>
+      
       
     </div>
 
+  
+<!--   coffee pods -->
+  <div class="coffee-pods-container white-container three-column-grid">
+    
+    <section>
+      <h1>Want Coffee Pods?</h1>
+      <p>We make and fill our own pods in-store for you to enjoy at your home or office. Decaf or regular we've got you sorted.</p>
+    </section>
+    
+     <section>
+    	<img src="https://cdn.shopify.com/s/files/1/0194/3912/4580/files/stock-photo-beautiful-colored-coffee-capsules-on-light-blue-background-1087288529_1.png?v=1629972683">
+    </section>
+    
+     <section>
+       <a href="" class="button-style-black">Shop Coffee Pods</a>
+    </section>
+  </div>
 </div>
 {% unless product == empty %}
   <script type="application/json" id="ProductJson-{{ section.id }}">
@@ -379,125 +377,31 @@
 {% endunless %}
 
 
-<script type="text/javascript" src="{{ 'jquery_accordion.js' | asset_url }}"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-$('.accordion').accordion({
-defaultOpen: 'section1',
-cookieName: 'accordion_nav'
-});
-});
+<script>
+  const subscription_container=document.querySelector('#rc_radio_options');
+  const subscription_popup=document.querySelector('.rc_popup');
+  
+  const subscription_modal=document.querySelector('.subscription-modal');
+  const subscription_checkout=document.querySelector('.subscription-checkout');
+  const addtocart_form=document.querySelector('#AddToCartForm--product-template');
+  const addtocart_button=document.querySelector('#AddToCart--product-template');
+  const subscription_close=document.querySelector('.subscription-close-button');
+ 
+  subscription_modal.style.display="none";
+  
+  addtocart_button.addEventListener('click',function(e){
+    e.preventDefault();
+    subscription_modal.style.display="flex";
+    
+     subscription_checkout.addEventListener('click',function(e){
+      addtocart_form.submit();
+    });
+  });
+  
+  subscription_close.addEventListener('click',function(e){
+       subscription_modal.style.display="none";
+  });
 </script>
-<style>
-.accordion {
-margin: 0;
-padding:10px;
-border-top:#f0f0f0 1px solid;
-background: #cccccc;
-text-decoration:none;
-color: #000;
-font-size:1em;
-position:relative;
-}
-.accordion-open {
-background:#000;
-color: #fff;
-}
-.accordion-open span {
-display:block;
-position:absolute;
-right:3px;
-top:25%;
-padding:10px;
-}
-.accordion-open span {
-background:url('{{ 'minus.png' | asset_url }}') center center no-repeat;
-}
-.accordion-close span {
-display:block;
-position:absolute;
-right:3px;
-top:25%;
-background:url('{{ 'plus.png' | asset_url }}') center center no-repeat;
-padding:10px;
-}
-.faqpage div.container {
-padding:0;
-margin:0;
-}
-.faqpage div.container {
-max-width:100%;
-padding:5px 0;
-}
-.faqpage div.content {
-background:#f0f0f0;
-margin: 0;
-padding:10px;
-font-size:.9em;
-line-height:1.5em;
-}
-.faqpage div.content ul {
-padding:0;
-margin:0;
-padding:3px;
-}
-.faqpage div.content p {
-padding:0;
-margin:3px 0 10px;
-padding:3px;
-}
-.faqpage div.content ul li {
-list-style-position:inside;
-line-height:25px;
-}
-  
-  .accordion-open {
-    background: #000;
-    color: #fff;
-    font-weight: 500;
-    font-size: 1rem;
-    border-radius:5px;
-}
-  
-  .product-single__description.rte p {
-    font-size: 1rem;
-}
-  
-  .accordion {
-    margin: 0;
-    padding: 10px;
-    border: #000 1px solid;
-    background: #ffffff;
-    text-decoration: none;
-    color: #000;
-    font-size: 0.9rem;
-    position: relative;
-    font-weight: 500;
-    border-radius:5px;
-}
-  
-  .social-sharing.clean a span {
-    height: 30px;
-    line-height: 30px;
-    font-size: 22px;
-    color: #000;
-}
-  
-  .social-sharing.clean {
-    margin-top: 30px;
-}
-  
-  
-.accordion {
-    margin-bottom: 10px;
-}
-  
-  div#shopify-section-product-template {
-    width: 85%;
-    margin: 0px auto;
-    border-radius:20px;
-}
-</style>
 
 {% schema %}
 {
