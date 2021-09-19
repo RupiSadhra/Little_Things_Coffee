@@ -255,10 +255,19 @@
             {% capture "form_id" %}AddToCartForm--{{ section.id }}{%- endcapture %}
 
             {% form 'product', product, data-productid: product.id, class:form_classes, id:form_id, data-product-form: '' %}
-              <!-- Begin ReCharge code -->
-              {% if product.available %}{% include 'subscription-product' %}{% endif %}
-              <!-- End ReCharge code -->
-
+            <div class="subscription-overlay"></div>
+             	<div class="subscription-modal">
+                  <div class="subscription-close-button"><i class="fas fa-times"></i></div>
+                   <!-- Begin ReCharge code -->
+                  		<section>
+                          <h5>Subscribe and Save 10%</h5>
+                          <p>Want to make your order a subscription? Tell us how often you'd like your order delivered and we'll look after the rest.</p>
+                  		</section>
+                    {% if product.available %}{% include 'subscription-product' %}{% endif %}
+                    <!-- End ReCharge code -->
+            
+                   <div class="button-style-black subscription-checkout">Go to Checkout</div>
+				</div>
               {% unless product.has_only_default_variant %}
                 {% for option in product.options_with_values %}
                   <div class="radio-wrapper js product-form__item">
@@ -333,9 +342,9 @@
                     {% endif %}
                   </span>
                 </button>
-                {% if section.settings.enable_payment_button %}
+<!--                 {% if section.settings.enable_payment_button %}
                   {{ form | payment_button }}
-                {% endif %}
+                {% endif %} -->
               </div>
             {% endform %}
 
@@ -358,11 +367,11 @@
     </section>
     
      <section>
-    	<img src="">
+    	<img src="https://cdn.shopify.com/s/files/1/0194/3912/4580/files/stock-photo-beautiful-colored-coffee-capsules-on-light-blue-background-1087288529_1.png?v=1629972683">
     </section>
     
      <section>
-       <a href="" class="button-style-black">Shop Coffee Pods</a>
+       <a href="https://e3d2zy6e05ppzc4i-19439124580.shopifypreview.com/products/little-things-coffee-pods-nespresso-compatible-capsules" class="button-style-black">Shop Coffee Pods</a>
     </section>
   </div>
 </div>
@@ -373,7 +382,34 @@
 {% endunless %}
 
 
-
+<script>
+  const subscription_container=document.querySelector('#rc_radio_options');
+  const subscription_popup=document.querySelector('.rc_popup');
+  
+  const subscription_modal=document.querySelector('.subscription-modal');
+  const subscription_checkout=document.querySelector('.subscription-checkout');
+  const addtocart_form=document.querySelector('#AddToCartForm--product-template');
+  const addtocart_button=document.querySelector('#AddToCart--product-template');
+  const subscription_close=document.querySelector('.subscription-close-button');
+  const subscription_overlay=document.querySelector('.subscription-overlay');
+  console.dir(subscription_overlay);
+ 
+  subscription_modal.style.display="none";
+  
+  addtocart_button.addEventListener('click',function(e){
+    e.preventDefault();
+    subscription_modal.style.display="flex";
+    subscription_overlay.style.display="block";
+     subscription_checkout.addEventListener('click',function(e){
+      addtocart_form.submit();
+    });
+  });
+  
+  subscription_close.addEventListener('click',function(e){
+       subscription_modal.style.display="none";
+    	subscription_overlay.style.display="none";
+  });
+</script>
 
 {% schema %}
 {

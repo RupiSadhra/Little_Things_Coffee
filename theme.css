@@ -5,7 +5,7 @@
   background-repeat:no-repeat;
   background-size:cover;
   width:100%;
-  margin:0;
+  marin:0;
   padding:0;
 }
 
@@ -494,11 +494,22 @@ div.giraffly-right-Bar-Preview-Example
 {
 	display:none;
 }
-
+.single-option-radio
+{
+  margin:0;
+  padding:0;
+}
 .single-option-radio label
 {
   border-color: #000;
   border-radius:5px;
+  padding:10px 20px;
+  font-family:inherit;
+   letter-spacing: 1px;
+  font-weight: 600;
+  line-height:22px;
+  text-transform:capitalize;
+  font-size:18px;
 }
 .product-single__title 
 {
@@ -557,23 +568,31 @@ div.giraffly-right-Bar-Preview-Example
 {
 	color:#000 !important;
 }
-.cart__price,.cart__subtotal,.rte
+.cart__price,.cart__subtotal
 {
 	color:#000;
 }
-.product-single__meta
+/* .product-single__meta
+{
+	position:relative;
+} */
+.product-single__meta--wrapper
+
 {
 	position:relative;
 }
 .subscription-modal
 {
 	position:absolute;
-  top:0;
+  top:13%;
+   height:87%;
   left:0;
   width:100%;
-  height:100%;
+ padding:20px 40px;
   background-color:#fff;
-  z-index:99;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  z-index:999;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -582,15 +601,60 @@ div.giraffly-right-Bar-Preview-Example
 .subscription-close-button
 {
   position:absolute;
-  top:0;
-  right:-10%;
-  width:100px;
-  height:100px;
+  top:5%;
+  right:0%;
+  width:40px;
+  height:40px;
   cursor:pointer;
 }
 .subscription-close-button i
 {
 	font-size:1.5rem;
+}
+.subscription-modal h5
+{
+	color:#000 !important;
+}
+.subscription-modal section
+{
+	margin-bottom:2rem;
+}
+.subscription-checkout
+{
+	width:100%;
+}
+.subscription-overlay
+{
+	position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#000;
+  opacity:0.6;
+  z-index:9;
+  display:none;
+}
+.brew-container
+{
+	grid-gap:3rem;
+}
+.three-column-grid section
+{
+	text-align:center;
+}
+div.rc_popup__hover
+{
+	display:none !important;
+}
+
+#CollectionSection p
+{
+	color:#fff;
+}
+.cart__subtotal-container p
+{
+	color:#000;
 }
 @media (max-width: 1400px) {  
  
@@ -604,11 +668,19 @@ div.giraffly-right-Bar-Preview-Example
   
   	max-width: 200px;
   }
+  
+  .subscription-modal
+  {
+    top:15%;
+    height:85%;
+    padding:20px 40px;
+    background-color:#fff;
+  }
 }
  
 /* Extra large devices (large desktops, 1200px and up) */
 @media (max-width: 1200px) {  
- .header-menu
+ .header-menu, .three-column-grid
   {
   	grid-template-columns: 1fr 1fr;
   }
@@ -617,7 +689,7 @@ div.giraffly-right-Bar-Preview-Example
  
 /* Large devices (desktops, 992px and up) */
 @media (max-width: 992px) { 
-    .footer-container, .footer-left,.footer-right,.two-column-grid
+    .footer-container, .footer-left,.footer-right,.two-column-grid,.three-column-grid
     {
         grid-template-columns:1fr;
       margin-bottom:4rem;
@@ -657,6 +729,7 @@ div.giraffly-right-Bar-Preview-Example
   	display:flex;
     justify-content:space-between;
   }
+  
 }
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
@@ -685,6 +758,10 @@ div.giraffly-right-Bar-Preview-Example
   
   .site-header .grid--table {
     height:0;
+  }
+  .brew-background-container
+  {
+  	min-height:150vh;
   }
  
 }
@@ -732,10 +809,14 @@ div.giraffly-right-Bar-Preview-Example
 }
 
 input#Quantity {
-    border: solid 1px #000;
+     border: solid 1px #000;
     width: 35%;
-    background: #fff;
-    height: 48px;
+    background: #000;
+  color:#fff;
+  padding: 10px 20px;
+  border-radius:5px;
+  font-family:inherit;
+  cursor:pointer;
 }
 
 button#AddToCart--product-template {
@@ -745,17 +826,24 @@ button#AddToCart--product-template {
   text-decoration: none;
   color: #000;
   background-color: #fff;
- padding: 8px 20px;
+ padding: 10px 20px;
   text-transform: uppercase;
   margin-top: 40px;
   text-align: center;
   letter-spacing: 1px;
   margin: 20px 10px 0 0;
-  font-weight: 900;
+font-style: normal;
+font-weight: bold;
+font-size: 18px;
+line-height: 25px;
   border:2px solid #000;
   border-radius: 4px;
   font-family: Quicksand,sans-serif;
   transition: all 0.3s ease-in;
+}
+button#AddToCart--product-template:hover{
+   background-color: #000;
+color:#fff;
 }
 
 .shopify-payment-button
@@ -976,7 +1064,14 @@ textarea#CartSpecialInstructions {
   .product-container {
     width: 100%;
   }
-  
+   .image-container {
+    width: 100%;
+     margin:auto;
+  }
+  .grid__item 
+  {
+  	margin-bottom:2rem;
+  }
   .product-container {
     padding: 15px;
   }
@@ -1000,10 +1095,11 @@ textarea#CartSpecialInstructions {
 }
  
   .product-single__meta--wrapper {
-    padding-right: 0;
-    padding-left: 15px;
-    margin: 0px;
-}
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  
+  
   
   .radio-wrapper.js.product-form__item select {
     width: 100%;
